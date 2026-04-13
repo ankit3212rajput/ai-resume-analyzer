@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <circle cx="189" cy="138" r="190" fill="#14B8A6" fill-opacity="0.22"/>
+  <circle cx="1049" cy="101" r="168" fill="#F97316" fill-opacity="0.22"/>
+  <rect x="79" y="92" width="1042" height="446" rx="36" fill="#111C34" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <text x="118" y="210" fill="#E2E8F0" font-size="24" font-family="Arial, sans-serif" letter-spacing="6">AI RESUME ANALYZER PRO</text>
+  <text x="118" y="306" fill="#FFFFFF" font-size="64" font-family="Arial, sans-serif" font-weight="700">Upload your resume</text>
+  <text x="118" y="384" fill="#FFFFFF" font-size="64" font-family="Arial, sans-serif" font-weight="700">and get instant ATS feedback</text>
+  <rect x="118" y="442" width="286" height="56" rx="28" fill="#14B8A6"/>
+  <text x="162" y="478" fill="#FFFFFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">Score. Match. Improve.</text>
+</svg>
