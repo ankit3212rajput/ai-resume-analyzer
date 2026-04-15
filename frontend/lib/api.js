@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https:ai-resume-analyzer-fz8b.onrender.com/api";
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https:ai-resume-analyzer-fz8b.onrender.com/api/auth";
 export const TOKEN_STORAGE_KEY = "aira_token";
 
 export async function apiRequest(path, { method = "GET", token, body, isFormData = false } = {}) {
