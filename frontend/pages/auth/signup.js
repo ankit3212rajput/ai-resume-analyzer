@@ -47,11 +47,11 @@ export default function SignupPage() {
 
   return (
     <>
-      <Seo title="Sign Up | AI Resume Analyzer Pro" canonical="/auth/signup" />
+      <Seo title="Sign Up | AI Resume Analyzer Pro" canonical="/signup" />
       <AuthShell
         title="Create account"
         subtitle="Start with a free plan and upgrade when you need more advanced AI tools."
-        alternateHref="/auth/login"
+        alternateHref="/login"
         alternateLabel="Already have an account? Log in"
       >
         <form onSubmit={handleSubmit} className="space-y-4">

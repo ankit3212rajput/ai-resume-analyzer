@@ -28,7 +28,7 @@ export default function HomePage() {
       return;
     }
 
-    router.push(`/auth/signup?plan=${planKey}`);
+    router.push(`/signup?plan=${planKey}`);
   }
 
   return (
@@ -48,7 +48,7 @@ export default function HomePage() {
             </div>
             <button
               type="button"
-              onClick={() => router.push(isAuthenticated ? "/dashboard" : "/auth/signup")}
+              onClick={() => router.push(isAuthenticated ? "/dashboard" : "/signup")}
               className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800"
             >
               {isAuthenticated ? "Open Dashboard" : "Create Free Account"}

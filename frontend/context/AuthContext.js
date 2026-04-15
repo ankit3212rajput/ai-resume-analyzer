@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
-import { apiRequest, getStoredToken, setStoredToken } from "@/lib/api";
+import { apiRequest, AUTH_API_PATHS, getStoredToken, setStoredToken } from "@/lib/api";
 
 const AuthContext = createContext(null);
 
@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
 
     setToken(existingToken);
 
-    apiRequest("/auth/me", { token: existingToken })
+    apiRequest(AUTH_API_PATHS.me, { token: existingToken })
       .then((response) => {
         setUser(response.user);
       })
@@ -51,7 +51,7 @@ export function AuthProvider({ children }) {
       return null;
     }
 
-    const response = await apiRequest("/auth/me", { token: nextToken });
+    const response = await apiRequest(AUTH_API_PATHS.me, { token: nextToken });
     setUser(response.user);
     return response.user;
   }, [token]);
@@ -68,9 +68,9 @@ export function AuthProvider({ children }) {
       token,
       user,
       isAuthenticated: Boolean(token && user),
-      login: (payload) => handleAuth("/auth/login", payload),
-      signup: (payload) => handleAuth("/auth/register", payload),
-      googleLogin: (payload) => handleAuth("/auth/google", payload),
+      login: (payload) => handleAuth(AUTH_API_PATHS.login, payload),
+      signup: (payload) => handleAuth(AUTH_API_PATHS.register, payload),
+      googleLogin: (payload) => handleAuth(AUTH_API_PATHS.google, payload),
       refreshUser,
       logout,
     }),

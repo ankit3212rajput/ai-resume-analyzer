@@ -13,7 +13,7 @@ export function useProtectedRoute({ adminOnly = false } = {}) {
     }
 
     if (!auth.isAuthenticated) {
-      router.replace("/auth/login");
+      router.replace("/login");
       return;
     }
 

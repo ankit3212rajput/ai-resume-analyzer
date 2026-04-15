@@ -1,5 +1,42 @@
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+const DEFAULT_API_BASE_URL = "https://ai-resume-analyzer-fz8b.onrender.com/api";
+
+function normalizeApiBaseUrl(value) {
+  const normalized = String(value || DEFAULT_API_BASE_URL)
+    .trim()
+    .replace(/\/+$/, "");
+
+  return normalized.replace(/\/auth$/, "");
+}
+
+function normalizeApiPath(path) {
+  let normalized = String(path || "").trim();
+
+  if (!normalized) {
+    return "";
+  }
+
+  if (!normalized.startsWith("/")) {
+    normalized = `/${normalized}`;
+  }
+
+  normalized = normalized.replace(/^\/api(?=\/|$)/, "");
+  normalized = normalized.replace(/^\/auth\/auth(?=\/|$)/, "/auth");
+
+  return normalized;
+}
+
+export const API_BASE_URL = normalizeApiBaseUrl(process.env.NEXT_PUBLIC_API_URL || DEFAULT_API_BASE_URL);
 export const TOKEN_STORAGE_KEY = "aira_token";
+export const AUTH_API_PATHS = Object.freeze({
+  me: "/auth/me",
+  login: "/auth/login",
+  register: "/auth/register",
+  google: "/auth/google",
+});
+
+export function buildApiUrl(path) {
+  return `${API_BASE_URL}${normalizeApiPath(path)}`;
+}
 
 export async function apiRequest(path, { method = "GET", token, body, isFormData = false } = {}) {
   const headers = {};
@@ -12,11 +49,19 @@ export async function apiRequest(path, { method = "GET", token, body, isFormData
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    method,
-    headers,
-    body: isFormData ? body : body ? JSON.stringify(body) : undefined,
-  });
+  let response;
+
+  try {
+    response = await fetch(buildApiUrl(path), {
+      method,
+      headers,
+      body: isFormData ? body : body ? JSON.stringify(body) : undefined,
+    });
+  } catch (_error) {
+    throw new Error(
+      `Unable to reach the backend API at ${API_BASE_URL}. Start the backend server or update NEXT_PUBLIC_API_URL.`
+    );
+  }
 
   const contentType = response.headers.get("content-type") || "";
   const payload = contentType.includes("application/json")

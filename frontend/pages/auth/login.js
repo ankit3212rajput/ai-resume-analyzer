@@ -47,11 +47,11 @@ export default function LoginPage() {
 
   return (
     <>
-      <Seo title="Login | AI Resume Analyzer Pro" canonical="/auth/login" />
+      <Seo title="Login | AI Resume Analyzer Pro" canonical="/login" />
       <AuthShell
         title="Login"
         subtitle="Access your dashboard, resume history, and billing tools."
-        alternateHref="/auth/signup"
+        alternateHref="/signup"
         alternateLabel="Need an account? Sign up"
       >
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -20,13 +20,13 @@ export default function Navbar({ authenticated = false }) {
         </div>
         <div className="flex items-center gap-3">
           <Link
-            href={authenticated ? "/dashboard" : "/auth/login"}
+            href={authenticated ? "/dashboard" : "/login"}
             className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-400"
           >
             {authenticated ? "Dashboard" : "Login"}
           </Link>
           <Link
-            href={authenticated ? "/dashboard" : "/auth/signup"}
+            href={authenticated ? "/dashboard" : "/signup"}
             className="rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
           >
             {authenticated ? "Analyze Resume" : "Get Started"}
